@@ -1,6 +1,6 @@
 // export const test_message = "This is a test message";
 
-export class todo {
+export class Todo {
     constructor(title, description, dueDate, priority, notes) {
         this.title = title,
         this.description = description;
