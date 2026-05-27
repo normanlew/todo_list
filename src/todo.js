@@ -1,12 +1,13 @@
 // export const test_message = "This is a test message";
 
 export class Todo {
-    constructor(title, description, dueDate, priority, notes) {
+    constructor(title, description, dueDate, priority, note, complete) {
         this.title = title,
         this.description = description;
         this.dueDate = dueDate,
         this.priority = priority;
-        this.notes = notes;
+        this.note = note;
+        this.complete = complete;
     }
 
     get title() {
@@ -41,11 +42,19 @@ export class Todo {
         this._priority = priority;
     }
 
-    get notes() {
-        return this._notes;
+    get note() {
+        return this._note;
     }    
 
-    set notes(notes) {
-        this._notes = notes;
+    set note(note) {
+        this._notes = note;
+    }
+
+    get complete() {
+        return this.complete;
+    }    
+
+    set complete(complete) {
+        this._notes = complete;
     }
 }
