@@ -1,0 +1,25 @@
+{
+  "name": "todo_list",
+  "version": "1.0.0",
+  "description": "An app for managing, creating, editing and deleting todos",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/normanlew/todo_list.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/normanlew/todo_list/issues"
+  },
+  "homepage": "https://github.com/normanlew/todo_list#readme",
+  "devDependencies": {
+    "webpack": "^5.107.1",
+    "webpack-cli": "^7.0.2"
+  }
+}
