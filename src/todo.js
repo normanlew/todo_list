@@ -55,6 +55,6 @@ export class Todo {
     }    
 
     set complete(complete) {
-        this._notes = complete;
+        this.complete = complete;
     }
 }
