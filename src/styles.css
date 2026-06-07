@@ -40,8 +40,21 @@ body {
 .project {
     background-color: pink;
     height: 300px;
+    display: flex;
+    overflow-y: auto;
+    flex-direction: column;
+    gap: 10px;
     /* height: 100%;
     width: 100%; */
+}
+
+.project_name {
+    text-align: center;
+}
+
+.todo {
+    display: flex;
+    font-size: 10px;
 }
 
 /* #project_1 {
