@@ -1,5 +1,6 @@
 import { Todo } from "./todo.js";
 import { Project } from "./project.js";
+import "./styles.css"
 
 // console.log(test_message);
 

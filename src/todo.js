@@ -47,7 +47,7 @@ export class Todo {
     }    
 
     set note(note) {
-        this._notes = note;
+        this._note = note;
     }
 
     get complete() {
@@ -55,6 +55,6 @@ export class Todo {
     }    
 
     set complete(complete) {
-        this.complete = complete;
+        this._complete = complete;
     }
 }
