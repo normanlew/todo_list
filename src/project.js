@@ -6,7 +6,7 @@ export class Project {
     todoList = [];
 
     get id() {
-        return this.id;
+        return this._id;
     }
 
     set id(id) {
