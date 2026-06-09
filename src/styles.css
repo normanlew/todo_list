@@ -52,8 +52,22 @@ body {
     text-align: center;
 }
 
+.todo_wrapper {
+    display: flex;
+}
+
 .todo {
     display: flex;
+    flex-direction: column;
+    /* font-size: 10px; */
+}
+
+.todo_title {
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.todo_dueDate {
     font-size: 10px;
 }
 

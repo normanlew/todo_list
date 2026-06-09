@@ -1,9 +1,17 @@
 export class Project {
-    constructor(name) {
+    constructor(id, name) {
         this.name = name;
     }
 
     todoList = [];
+
+    get id() {
+        return this.id;
+    }
+
+    set id(id) {
+        this._id = id;
+    }
 
     get name() {
         return this._name;

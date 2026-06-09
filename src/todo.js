@@ -1,13 +1,27 @@
 // export const test_message = "This is a test message";
 
 export class Todo {
-    constructor(title, description, dueDate, priority, note, complete) {
+    constructor(id, title, description, dueDate, priority, note, complete) {
+        this.id = id;
         this.title = title,
         this.description = description;
         this.dueDate = dueDate,
         this.priority = priority;
         this.note = note;
         this.complete = complete;
+    }
+
+    info() {
+        return `${this.id}, ${this.title}, ${this.description}, ${this.dueDate}, ${this.priority}, 
+                ${this.note}, ${this.complete ? 'complete' : 'not complete'}`
+    }
+
+    get id() {
+        return this._id;
+    }
+
+    set id(id) {
+        this._id = id;
     }
 
     get title() {
