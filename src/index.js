@@ -3,6 +3,7 @@ import { Project } from "./project.js";
 import "./styles.css";
 
 const all_projects = [];
+
 function addTodoToProject(project, title, description, dueDate, priority, note, complete) {
   let todo = new Todo(crypto.randomUUID(), title, description, dueDate, priority, note, complete);
   project.addTodo(todo);
