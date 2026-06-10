@@ -9,6 +9,13 @@ function addTodoToProject(project, title, description, dueDate, priority, note, 
   project.addTodo(todo);
 }
 
+const button_new_project = document.querySelector("#new_project");
+
+button_new_project.addEventListener("click", (event) => {
+     console.log("new project button clicked");
+     createNewProject(all_projects);
+});
+
 const afternoonTodos = new Project(crypto.randomUUID(), "Afternoon");
 
 addTodoToProject(afternoonTodos, "Call car repair", "Call dealership to do oil change", new Date(2018, 11, 24, 10, 33, 30),
@@ -24,12 +31,14 @@ for (let project of all_projects) {
      let div_project = document.createElement("div");
 
      div_project.className = "project";
+     // div_project.innerHTML = project.name;
      div_project.id = project.id;
      let div_project_name = document.createElement("div");
      div_project_name.className = "project_name";
      let h2_title = document.createElement("h2");
      h2_title.innerHTML = project.name;
      div_project_name.appendChild(h2_title);
+     div_project.appendChild(div_project_name);
 
      for (let todo of project.todoList) {
           let div_todo_wrapper = document.createElement("div");
@@ -67,5 +76,20 @@ for (let project of all_projects) {
           div_project.appendChild(div_todo_wrapper);
      }
      projects.appendChild(div_project);
+}
+
+function createNewProject(projects) {
+     let project_name = prompt("Please enter the new project name: ");
+
+     for (let project of projects) {
+          if (project.name === project_name) {
+               alert("That project already exists");
+               break;
+          }
+          else {
+               const new_project = new Project(crypto.randomUUID(), project_name);
+               projects.push(new_project);
+          }
+     }
 }
 
