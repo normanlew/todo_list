@@ -78,18 +78,28 @@ for (let project of all_projects) {
      projects.appendChild(div_project);
 }
 
-function createNewProject(projects) {
+function createNewProject(projects_list) {
      let project_name = prompt("Please enter the new project name: ");
+     let project_exists = false;
 
-     for (let project of projects) {
-          if (project.name === project_name) {
-               alert("That project already exists");
-               break;
+     if (project_name !== null) {
+          for (let project of projects_list) {
+               console.log(project.name);
+               console.log(project_name);
+               if (project.name === project_name) {
+                    alert("That project already exists");
+                    project_exists = true;
+                    break;
+               }
+               // else {
+               //      const new_project = new Project(crypto.randomUUID(), project_name);
+               //      projects_list.push(new_project);
+               // }
           }
-          else {
+          if (!project_exists) {
                const new_project = new Project(crypto.randomUUID(), project_name);
-               projects.push(new_project);
+               projects_list.push(new_project);    
           }
-     }
+     }    
 }
 
