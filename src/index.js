@@ -24,6 +24,9 @@ addTodoToProject(afternoonTodos, "Call car repair", "Call dealership to do oil c
 addTodoToProject(afternoonTodos, "Schedule lunch with Bob", "Call Bob and the restaurant to set the time", 
      new Date(2018, 1, 24, 17, 53, 45), "Medium", "Bob will be in town for business", true);
 
+addTodoToProject(afternoonTodos, "Go to gym", "Go to the LA fitness in the lobby", 
+     new Date(2018, 1, 24, 19, 22, 22), "High", "Biweekly workout", false);
+
 all_projects.push(afternoonTodos);
 const projects = document.querySelector(".projects");
 
@@ -44,6 +47,7 @@ for (let project of all_projects) {
           let div_todo_wrapper = document.createElement("div");
 
           div_todo_wrapper.className = "todo_wrapper";
+          // div_todo_wrapper.id = todo.id;
           let div_todo = document.createElement("div");
           div_todo.className = "todo";
           let div_todo_title = document.createElement("div");
@@ -67,6 +71,10 @@ for (let project of all_projects) {
           let button_todo_delete = document.createElement("button");
           button_todo_delete.className = "todo_delete";
           button_todo_delete.innerHTML = "Delete";
+          button_todo_delete.id = todo.id;
+          button_todo_delete.addEventListener("click", (event) => {
+               div_todo_wrapper.remove();
+          });
           div_todo_buttons.appendChild(button_todo_expand);
           div_todo_buttons.appendChild(button_todo_delete);
 
