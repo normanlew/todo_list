@@ -38,7 +38,7 @@
                         </div>
                         <div class="dueDate">
                             <label for="dueDate">Date and Time:</label>
-                            <input type="datetime" id="dueDate" name="dueDate">
+                            <input type="datetime-local"  value="2017-06-01T08:30" id="dueDate" name="dueDate">
                         </div>
                         <div class="note">
                             <label for="note">Note:</label>
@@ -57,6 +57,17 @@
                                 <option value="false">Not complete</option>
                                 <option value="true">Complete</option>
                             </select>
+                        </div>
+                        <div class="form_buttons">
+                            <button type="submit" form="submit-form" value="form-submission" class="submit-button">
+                                Submit
+                            </button>
+                            <button type="reset">
+                                Reset
+                            </button>
+                            <button value="cancel_new_todo" class="cancel_button">
+                                Cancel
+                            </button>
                         </div>
                     </form>
                 </div>

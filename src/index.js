@@ -2,40 +2,40 @@ import { Todo } from "./todo.js";
 import { Project } from "./project.js";
 import "./styles.css";
 
-// const all_projects = [];
+const all_projects = [];
 
-// function addTodoToProject(project, title, description, dueDate, priority, note, complete) {
-//   let todo = new Todo(crypto.randomUUID(), title, description, dueDate, priority, note, complete);
-//   project.addTodo(todo);
-// }
+function addTodoToProject(project, title, description, dueDate, priority, note, complete) {
+  let todo = new Todo(crypto.randomUUID(), title, description, dueDate, priority, note, complete);
+  project.addTodo(todo);
+}
 
-// const button_new_project = document.querySelector("#new_project");
+const button_new_project = document.querySelector("#new_project");
 
-// button_new_project.addEventListener("click", (event) => {
-//      console.log("new project button clicked");
-//      createNewProject(all_projects);
-// });
+button_new_project.addEventListener("click", (event) => {
+     console.log("new project button clicked");
+     createNewProject(all_projects);
+});
 
-// const button_new_todo = documentquerySelector("#new_todo");
+const button_new_todo = documentquerySelector("#new_todo");
 
-// button_new_todo.addEventListener("click", (event) => {
-//      console.log("new todo button clicked");
-//      createNewTodo(all_projects);
-// });
+button_new_todo.addEventListener("click", (event) => {
+     console.log("new todo button clicked");
+     createNewTodo(all_projects);
+});
 
-// const afternoonTodos = new Project(crypto.randomUUID(), "Afternoon");
+const afternoonTodos = new Project(crypto.randomUUID(), "Afternoon");
 
-// addTodoToProject(afternoonTodos, "Call car repair", "Call dealership to do oil change", new Date(2018, 11, 24, 10, 33, 30),
-//      "Low", `This is the half-yearly service`, false);
+addTodoToProject(afternoonTodos, "Call car repair", "Call dealership to do oil change", new Date(2018, 11, 24, 10, 33, 30),
+     "Low", `This is the half-yearly service`, false);
 
-// addTodoToProject(afternoonTodos, "Schedule lunch with Bob", "Call Bob and the restaurant to set the time", 
-//      new Date(2018, 1, 24, 17, 53, 45), "Medium", "Bob will be in town for business", true);
+addTodoToProject(afternoonTodos, "Schedule lunch with Bob", "Call Bob and the restaurant to set the time", 
+     new Date(2018, 1, 24, 17, 53, 45), "Medium", "Bob will be in town for business", true);
 
-// addTodoToProject(afternoonTodos, "Go to gym", "Go to the LA fitness in the lobby", 
-//      new Date(2018, 1, 24, 19, 22, 22), "High", "Biweekly workout", false);
+addTodoToProject(afternoonTodos, "Go to gym", "Go to the LA fitness in the lobby", 
+     new Date(2018, 1, 24, 19, 22, 22), "High", "Biweekly workout", false);
 
-// all_projects.push(afternoonTodos);
-// const projects = document.querySelector(".projects");
+all_projects.push(afternoonTodos);
+const projects = document.querySelector(".projects");
 
 // for (let project of all_projects) {
 //      let div_project = document.createElement("div");
@@ -121,8 +121,51 @@ import "./styles.css";
 //      }    
 // }
 
-// function createNewTodo(projects_list) {
-//      div_new_todo = document.createElement("div");
-
-// }
+function createNewTodo(projects_list) {
+     // projects.innerHTML = 
+     // `<div class="new_todo_wrapper">
+     //                <form id="submit-form" method="POST" action="/form_submit">
+     //                    <div class="projects_list">
+     //                        <label for="projects_list">Project:</label>
+     //                        <select name="projects_list" id="projects_list">
+     //                            <option value="default">Default</option>
+     //                            <option value="afternoon">Afternoon</option>
+     //                        </select>
+     //                    </div>
+     //                    <div class="title">
+     //                        <label for="title">Title:</label>
+     //                        <input type="text" id="title" name="title">
+     //                    </div>
+     //                    <div class="description">
+     //                        <label for="description">Description:</label>
+     //                        <input type="text" id="description" name="description">
+     //                    </div>
+     //                    <div class="dueDate">
+     //                        <label for="dueDate">Date and Time:</label>
+     //                        <input type="datetime-local"  value="2017-06-01T08:30" id="dueDate" name="dueDate">
+     //                    </div>
+     //                    <div class="note">
+     //                        <label for="note">Note:</label>
+     //                        <textarea id="note" name="note" rows="5" cols="40" placeholder="Notes...">
+     //                        </textarea>
+     //                    <div class="priority">
+     //                        <label for="priority">Priority:</label>
+     //                        <select name="priority" id="priority">
+     //                            <option value="low">Low</option>
+     //                            <option value="medium">Medium</option>
+     //                            <option value="high">High</option>
+     //                        </select>
+     //                    <div class="complete">
+     //                        <label for="complete">Todo complete?:</label>
+     //                        <select name="complete" id="complete">
+     //                            <option value="false">Not complete</option>
+     //                            <option value="true">Complete</option>
+     //                        </select>
+     //                    </div>
+     //                </form>
+     //            </div>
+     // `
+     // const div_new_todo = document.createElement("div");
+     // div_new_todo.className = "new_todo_wrapper";
+}
 
