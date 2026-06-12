@@ -12,8 +12,11 @@ export class Todo {
     }
 
     info() {
+        // return `${this.id}, ${this.title}, ${this.description}, ${this.dueDate}, ${this.priority}, 
+        //         ${this.note}, ${this.complete ? 'complete' : 'not complete'}`
+
         return `${this.id}, ${this.title}, ${this.description}, ${this.dueDate}, ${this.priority}, 
-                ${this.note}, ${this.complete ? 'complete' : 'not complete'}`
+                ${this.note}, ${this.complete}`
     }
 
     get id() {
