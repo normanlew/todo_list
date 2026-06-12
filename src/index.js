@@ -122,6 +122,8 @@ function createNewProject(projects_list) {
 }
 
 function createNewTodo(projects_list) {
+     //   <option value="afternoon">Afternoon</option>
+
      projects.innerHTML = 
      `<div class="new_todo_wrapper">
                     <form id="submit-form" method="POST" action="/form_submit">
@@ -129,7 +131,6 @@ function createNewTodo(projects_list) {
                             <label for="projects_list">Project:</label>
                             <select name="projects_list" id="projects_list">
                                 <option value="default">Default</option>
-                                <option value="afternoon">Afternoon</option>
                             </select>
                         </div>
                         <div class="title">
@@ -176,7 +177,14 @@ function createNewTodo(projects_list) {
                     </form>
                 </div>
      `
-     const div_new_todo = document.createElement("div");
-     div_new_todo.className = "new_todo_wrapper";
+     const select_project = document.querySelector("#projects_list");
+     for (let project of projects_list) {
+          const project_option = project.name;
+          const opt = document.createElement("option");
+          opt.value = project_option.toLowerCase();
+          opt.innerHTML = project_option;
+          select_project.appendChild(opt);
+     }
+
 }
 
