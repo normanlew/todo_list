@@ -216,8 +216,11 @@ function display_all_projects(projects_list) {
                button_todo_delete.innerHTML = "Delete";
                button_todo_delete.id = todo.id;
                button_todo_delete.addEventListener("click", (event) => {
-                    div_todo_wrapper.remove();
+                    // div_todo_wrapper.remove();
                     // console.log
+                    const index = project.todoList.findIndex(_todo => _todo.id === todo.id);
+                    project.todoList.splice(index, 1);
+                    display_all_projects(projects_list);
                });
 
                div_todo_buttons.appendChild(button_todo_expand);
