@@ -68,7 +68,7 @@ export class Todo {
     }
 
     get complete() {
-        return this.complete;
+        return this._complete;
     }    
 
     set complete(complete) {

@@ -202,6 +202,10 @@ function display_all_projects(projects_list) {
                div_todo.appendChild(div_todo_title);
                div_todo.appendChild(div_todo_dueDate);
 
+               if (todo.complete === true) {
+                    div_todo.style.backgroundColor = "rgb(48,47,47)";
+               }
+
                let div_todo_buttons = document.createElement("div");
                div_todo_buttons.className = "todo_buttons"
                let button_todo_expand = document.createElement("button");
