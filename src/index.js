@@ -242,8 +242,10 @@ function display_all_projects(projects_list) {
 
 function displayFullTodo(todo, project, projects_list) {
      const todo_display = document.createElement("div");
+     todo_display.className = "todo_display";
 
      const div_project = document.createElement("div");
+     div_project.className = "fullTodo"
      const h2_project = document.createElement("h2");
      h2_project.innerHTML = "Project: ";
      const p_project = document.createElement("p");
@@ -255,6 +257,7 @@ function displayFullTodo(todo, project, projects_list) {
      // div_project_title.appendChild(div_name_wrapper);
 
      const div_title = document.createElement("div");
+     div_title.className = "fullTodo";
      const h2_title = document.createElement("h2");
      h2_title.innerHTML = "Title:";
      const p_title = document.createElement("p");
@@ -263,6 +266,7 @@ function displayFullTodo(todo, project, projects_list) {
      div_title.appendChild(p_title);
      
      const div_description = document.createElement("div");
+     div_description.className = "fullTodo";
      const h2_description = document.createElement("h2");
      h2_description.innerHTML = "Description:";
      const p_description = document.createElement("p");
@@ -271,6 +275,7 @@ function displayFullTodo(todo, project, projects_list) {
      div_description.appendChild(p_description);
 
      const div_dueDate = document.createElement("div");
+     div_dueDate.className = "fullTodo";
      const h2_dueDate = document.createElement("h2");
      h2_dueDate.innerHTML = "Due date: ";
      const p_dueDate = document.createElement("p");
@@ -279,6 +284,7 @@ function displayFullTodo(todo, project, projects_list) {
      div_dueDate.appendChild(p_dueDate);
 
      const div_note = document.createElement("div");
+     div_note.className = "fullTodo";
      const h2_note = document.createElement("h2");
      h2_note.innerHTML = "Notes: ";
      const p_note = document.createElement("p");
@@ -287,6 +293,7 @@ function displayFullTodo(todo, project, projects_list) {
      div_note.appendChild(p_note);
 
      const div_priority = document.createElement("div");
+     div_priority.className = "fullTodo";
      const h2_priority  = document.createElement("h2");
      h2_priority.innerHTML = "Priority: ";
      const p_priority = document.createElement("p");
@@ -295,6 +302,7 @@ function displayFullTodo(todo, project, projects_list) {
      div_priority.appendChild(p_priority);
 
      const div_complete = document.createElement("div");
+     div_complete.className = "fullTodo";
      const h2_complete = document.createElement("h2");
      h2_complete.innerHTML = "Completion status: ";
      const p_complete = document.createElement("p");
@@ -303,6 +311,7 @@ function displayFullTodo(todo, project, projects_list) {
      div_complete.appendChild(p_complete);
 
      const div_button_done_edit = document.createElement("div");
+     div_title.className = "fullTodo";
      const button_done = document.createElement("button");
      button_done.textContent = "Done";
      button_done.addEventListener("click", (event) => {
@@ -334,6 +343,6 @@ function displayFullTodo(todo, project, projects_list) {
 }
 
 function showTodoEdit(todo, project, projects_list) {
-     
+
 }
 
