@@ -81,3 +81,19 @@ body {
     margin-right: 0;
 }
 
+todo_display {
+    display: flex;
+    flex-direction: column;
+}
+
+div_project
+div_title,
+div_description,
+div_dueDate,
+div_note,
+div_priority,
+const div_complete {
+    display: flex;
+    flex-direction: column;
+}
+

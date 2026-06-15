@@ -213,6 +213,7 @@ function display_all_projects(projects_list) {
                button_todo_expand.innerHTML = "Expand";
                button_todo_expand.addEventListener("click", (event) => {
                     console.log("Todo expand clicked");
+                    displayFullTodo(todo, project, projects_list);
                });
 
                let button_todo_delete = document.createElement("button");
@@ -237,5 +238,102 @@ function display_all_projects(projects_list) {
           }
           projects.appendChild(div_project);
      }
+}
+
+function displayFullTodo(todo, project, projects_list) {
+     const todo_display = document.createElement("div");
+
+     const div_project = document.createElement("div");
+     const h2_project = document.createElement("h2");
+     h2_project.innerHTML = "Project: ";
+     const p_project = document.createElement("p");
+     p_project.innerHTML = project.name;
+     div_project.appendChild(h2_project);
+     div_project.appendChild(p_project);
+     // const div_title = document.createElement("div")
+     // const project_title = project.title;
+     // div_project_title.appendChild(div_name_wrapper);
+
+     const div_title = document.createElement("div");
+     const h2_title = document.createElement("h2");
+     h2_title.innerHTML = "Title:";
+     const p_title = document.createElement("p");
+     p_title.innerHTML = todo.title;
+     div_title.appendChild(h2_title);
+     div_title.appendChild(p_title);
+     
+     const div_description = document.createElement("div");
+     const h2_description = document.createElement("h2");
+     h2_description.innerHTML = "Description:";
+     const p_description = document.createElement("p");
+     p_description.innerHTML = todo.description;
+     div_description.appendChild(h2_description);
+     div_description.appendChild(p_description);
+
+     const div_dueDate = document.createElement("div");
+     const h2_dueDate = document.createElement("h2");
+     h2_dueDate.innerHTML = "Due date: ";
+     const p_dueDate = document.createElement("p");
+     p_dueDate.innerHTML = todo.dueDate;
+     div_dueDate.appendChild(h2_dueDate);
+     div_dueDate.appendChild(p_dueDate);
+
+     const div_note = document.createElement("div");
+     const h2_note = document.createElement("h2");
+     h2_note.innerHTML = "Notes: ";
+     const p_note = document.createElement("p");
+     p_note.innerHTML = todo.note;
+     div_note.appendChild(h2_note);
+     div_note.appendChild(p_note);
+
+     const div_priority = document.createElement("div");
+     const h2_priority  = document.createElement("h2");
+     h2_priority.innerHTML = "Priority: ";
+     const p_priority = document.createElement("p");
+     p_priority.innerHTML = todo.priority;
+     div_priority.appendChild(h2_priority);
+     div_priority.appendChild(p_priority);
+
+     const div_complete = document.createElement("div");
+     const h2_complete = document.createElement("h2");
+     h2_complete.innerHTML = "Completion status: ";
+     const p_complete = document.createElement("p");
+     p_complete.innerHTML = `${todo.complete ? "Complete" : "Not Complete"}`;
+     div_complete.appendChild(h2_complete);
+     div_complete.appendChild(p_complete);
+
+     const div_button_done_edit = document.createElement("div");
+     const button_done = document.createElement("button");
+     button_done.textContent = "Done";
+     button_done.addEventListener("click", (event) => {
+          projects.innerHTML = "";
+          display_all_projects(projects_list);
+     });
+     div_button_done_edit.appendChild(button_done);
+     const button_edit = document.createElement("button");
+     button_edit.textContent = "Edit";
+     button_edit.addEventListener("click", (event)=> {
+          showTodoEdit(todo, project, projects_list);
+     });
+     div_button_done_edit.appendChild(button_edit);
+
+
+     todo_display.appendChild(div_project);
+     todo_display.appendChild(div_title);
+     todo_display.appendChild(div_description);
+     todo_display.appendChild(div_dueDate);
+     todo_display.appendChild(div_note);
+     todo_display.appendChild(div_priority);
+     todo_display.appendChild(div_complete);
+     todo_display.appendChild(div_button_done_edit);
+
+
+     projects.innerHTML = "";
+     projects.appendChild(todo_display);
+
+}
+
+function showTodoEdit(todo, project, projects_list) {
+     
 }
 
