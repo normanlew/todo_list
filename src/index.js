@@ -411,7 +411,8 @@ function showTodoEdit(todo, project, projects_list) {
 
      const button_cancel = document.querySelector(".cancel_button");
      button_cancel.addEventListener("click", (event) => {
-          display_all_projects(projects_list);
+          // display_all_projects(projects_list);
+          displayFullTodo(todo, project, projects_list);
      })
      
      // const form = document.querySelector("#submit-form");
