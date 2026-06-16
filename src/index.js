@@ -105,10 +105,10 @@ function createNewTodo(projects_list) {
                             <button type="submit" form="submit-form" value="form-submission" class="submit-button">
                                 Submit
                             </button>
-                            <button type="reset">
+                            <button form="submit-form" type="reset">
                                 Reset
                             </button>
-                            <button value="cancel_new_todo" class="cancel_button">
+                            <button form="submit-form" value="cancel_new_todo" class="cancel_button">
                                 Cancel
                             </button>
                         </div>
@@ -168,6 +168,8 @@ function addTodoToProject(project, title, description, dueDate, priority, note, 
 }
 
 function display_all_projects(projects_list) {
+     console.log("inside display_all_projects function: ");
+     console.log(projects_list);
      projects.innerHTML = "";
      for (let project of all_projects) {
           let div_project = document.createElement("div");
@@ -343,10 +345,12 @@ function displayFullTodo(todo, project, projects_list) {
 }
 
 function showTodoEdit(todo, project, projects_list) {
-     console.log(todo.title);
+     console.log("inside showTodoEdit function: ");
+     console.log(projects_list);
+     // console.log(todo.title);
      projects.innerHTML = 
      `<div class="new_todo_wrapper">
-          <form id="change-form" method="POST" action="/form_submit">
+          <form id="change_form" method="POST" action="/form_submit">
                <div class="projects_list">
                     <label for="projects_list">Project:</label>
                     <select name="projects_list" id="projects_list">
@@ -383,10 +387,10 @@ function showTodoEdit(todo, project, projects_list) {
                     </select>
                </div>
                <div class="form_buttons">
-                    <button form="change-form" value="form-change" class="change-button">
-                         Submit
+                    <button type="submit" form="change_form" value="form-change" class="change-button">
+                         Change
                     </button>
-                    <button value="cancel_change_todo" class="cancel_button">
+                    <button form="change_form" value="cancel_change_todo" class="cancel_button">
                          Cancel
                     </button>
                </div>
@@ -404,6 +408,11 @@ function showTodoEdit(todo, project, projects_list) {
           }
           select_project.appendChild(opt);
      }
+
+     const button_cancel = document.querySelector(".cancel_button");
+     button_cancel.addEventListener("click", (event) => {
+          display_all_projects(projects_list);
+     })
      
      // const form = document.querySelector("#submit-form");
 
