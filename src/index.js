@@ -90,9 +90,9 @@ function createNewTodo(projects_list) {
                         <div class="priority">
                             <label for="priority">Priority:</label>
                             <select name="priority" id="priority">
-                                <option value="low">Low</option>
-                                <option value="medium">Medium</option>
-                                <option value="high">High</option>
+                                <option value="Low">Low</option>
+                                <option value="Medium">Medium</option>
+                                <option value="High">High</option>
                             </select>
                         <div class="complete">
                             <label for="complete">Todo complete?:</label>
@@ -343,6 +343,103 @@ function displayFullTodo(todo, project, projects_list) {
 }
 
 function showTodoEdit(todo, project, projects_list) {
+     console.log(todo.title);
+     projects.innerHTML = 
+     `<div class="new_todo_wrapper">
+          <form id="change-form" method="POST" action="/form_submit">
+               <div class="projects_list">
+                    <label for="projects_list">Project:</label>
+                    <select name="projects_list" id="projects_list">
+                    </select>
+               </div>
+               <div class="title">
+                    <label for="title">Title:</label>
+                    <input type="text" id="title" name="title" size="60" value="${todo.title}">
+               </div>
+               <div class="description">
+                    <label for="description">Description:</label>
+                    <input type="text" id="description" name="description" value="${todo.description}">
+               </div>
+               <div class="dueDate">
+                    <label for="dueDate">Date and Time:</label>
+                    <input type="datetime-local"  value="2017-06-01T08:30" id="dueDate" name="dueDate"
+                    value="${todo.dueDate}">
+               </div>
+               <div class="note">
+                    <label for="note">Note:</label>
+                    <textarea id="note" name="note" rows="5" cols="40" placeholder="${todo.note}"></textarea>
+               <div class="priority">
+                    <label for="priority">Priority:</label>
+                    <select name="priority" id="priority">
+                         <option value="Low" ${"Low" === todo.priority ? "selected" : ""}>Low</option>
+                         <option value="Medium" ${"Medium" === todo.priority ? "selected" : ""}>Medium</option>
+                         <option value="High" ${"High" === todo.priority ? "selected" : ""}>High</option>
+                    </select>
+               <div class="complete">
+                    <label for="complete">Todo complete?:</label>
+                    <select name="complete" id="complete">
+                         <option value="false" ${todo.complete === false ? "selected" : ""}>Not complete</option>
+                         <option value="true" ${todo.complete === true ? "selected" : ""}>Complete</option>
+                    </select>
+               </div>
+               <div class="form_buttons">
+                    <button form="change-form" value="form-change" class="change-button">
+                         Submit
+                    </button>
+                    <button value="cancel_change_todo" class="cancel_button">
+                         Cancel
+                    </button>
+               </div>
+          </form>
+     </div>
+     `
+     const select_project = document.querySelector("#projects_list");
+     for (let proj of projects_list) {
+          const project_option = proj.name;
+          const opt = document.createElement("option");
+          // opt.value = project_option.toLowerCase();
+          opt.innerHTML = project_option;
+          if (proj.name === project.name) {
+               opt.selected = true;
+          }
+          select_project.appendChild(opt);
+     }
+     
+     // const form = document.querySelector("#submit-form");
 
+     // form.addEventListener('submit', (event) => {
+     //      event.preventDefault();
+
+     //      const formData = new FormData(form);
+     //      const data = Object.fromEntries(formData.entries());
+
+     //      event.target.reset();
+
+     //      console.log(data);
+     //      // console.log(typeof(data.read_status));
+     //      console.log(data.projects_list);
+
+     //      const project_name = data.projects_list;
+
+     //      const index = projects_list.findIndex(project => project.name === project_name);
+     //      console.log(index);
+
+     //      addTodoToProject(projects_list[index], data.title, data.description, data.dueDate, data.priority, data.name, 
+     //           `${data.complete === "true" ? true : false}`);
+
+     //      display_all_projects(projects_list);
+
+     //      // addBookToLibrary(data.title, data.author, data.pages, data.read_status === 'read' ? true : false);
+     //      // table.innerHTML = "";
+     //      // document.getElementById("form_new_book").style.display = "none";
+     //      // generateTable(table, myLibrary);
+     //      // generateTableHead(table);
+
+     // });
+
+     // const button_cancel = document.querySelector(".cancel_button");
+     // button_cancel.addEventListener("click", (event) => {
+     //      display_all_projects()
+     // })
 }
 
