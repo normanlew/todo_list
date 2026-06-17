@@ -19,6 +19,7 @@ button_new_todo.addEventListener("click", (event) => {
 });
 
 const afternoonTodos = new Project(crypto.randomUUID(), "Afternoon");
+const eveningTodos = new Project(crypto.randomUUID(), "Evening");
 
 addTodoToProject(afternoonTodos, "Call car repair", "Call dealership to do oil change", new Date(2018, 11, 24, 10, 33, 30),
      "Low", `This is the half-yearly service`, false);
@@ -29,7 +30,14 @@ addTodoToProject(afternoonTodos, "Schedule lunch with Bob", "Call Bob and the re
 addTodoToProject(afternoonTodos, "Go to gym", "Go to the LA fitness in the lobby", 
      new Date(2018, 1, 24, 19, 22, 22), "High", "Biweekly workout", false);
 
+addTodoToProject(eveningTodos, "Walk the dog", "Take a stroll through the neighborhood with dog", 
+     new Date(2026, 1, 24, 18, 53, 45), "Low", "Should eventually be a daily event", false);
+
+addTodoToProject(eveningTodos, "Make dinner", "Use ingredients in the refrigerator", 
+     new Date(2026, 5, 30, 19, 22, 22), "High", "There should be meat and veggies as well as a starch", false);
+
 all_projects.push(afternoonTodos);
+all_projects.push(eveningTodos);
 const projects = document.querySelector(".projects");
 
 display_all_projects(all_projects);
@@ -387,7 +395,7 @@ function showTodoEdit(todo, project, projects_list) {
                     </select>
                </div>
                <div class="form_buttons">
-                    <button type="submit" form="change_form" value="form-change" class="change-button">
+                    <button type="submit" form="change_form" value="form_change" class="change_button">
                          Change
                     </button>
                     <button form="change_form" value="cancel_change_todo" class="cancel_button">
@@ -410,42 +418,63 @@ function showTodoEdit(todo, project, projects_list) {
      }
 
      const button_cancel = document.querySelector(".cancel_button");
+
      button_cancel.addEventListener("click", (event) => {
           // display_all_projects(projects_list);
           displayFullTodo(todo, project, projects_list);
      })
      
-     // const form = document.querySelector("#submit-form");
+     const form = document.querySelector("#change_form");
 
-     // form.addEventListener('submit', (event) => {
-     //      event.preventDefault();
+     form.addEventListener('submit', (event) => {
+          event.preventDefault();
 
-     //      const formData = new FormData(form);
-     //      const data = Object.fromEntries(formData.entries());
+          const formData = new FormData(form);
+          const data = Object.fromEntries(formData.entries());
 
-     //      event.target.reset();
+          event.target.reset();
 
-     //      console.log(data);
-     //      // console.log(typeof(data.read_status));
-     //      console.log(data.projects_list);
+          console.log(data);
 
-     //      const project_name = data.projects_list;
+          todo.title = data.title;
+          todo.description = data.description;
+          todo.dueDate = data.dueDate;
+          todo.priority = data.priority;
+          todo.note = data.note;
+          todo.complete = data.complete;
 
-     //      const index = projects_list.findIndex(project => project.name === project_name);
-     //      console.log(index);
+          if (data.projects_list !== project.name) {
+               const new_index = projects_list.findIndex(project => project.name === data.projects_list);
+               projects_list[new_index].todoList.push(todo);
 
-     //      addTodoToProject(projects_list[index], data.title, data.description, data.dueDate, data.priority, data.name, 
-     //           `${data.complete === "true" ? true : false}`);
+               const old_index = projects_list.findIndex(proj => proj.name === project.name);
+               console.log("old_index: " + old_index);
+               const oldProject = projects_list[old_index];
+               // console.log(old_project);
+               const old_todo_index = oldProject.todoList.findIndex(todo_old => todo_old.id === todo.id);
+               oldProject.todoList.splice(old_todo_index, 1);
 
-     //      display_all_projects(projects_list);
+          }
+          // console.log(typeof(data.read_status));
+          // console.log(data.projects_list);
 
-     //      // addBookToLibrary(data.title, data.author, data.pages, data.read_status === 'read' ? true : false);
-     //      // table.innerHTML = "";
-     //      // document.getElementById("form_new_book").style.display = "none";
-     //      // generateTable(table, myLibrary);
-     //      // generateTableHead(table);
+          // const project_name = data.projects_list;
 
-     // });
+          // const index = projects_list.findIndex(project => project.name === project_name);
+          // console.log(index);
+
+          // addTodoToProject(projects_list[index], data.title, data.description, data.dueDate, data.priority, data.name, 
+          //      `${data.complete === "true" ? true : false}`);
+
+          display_all_projects(projects_list);
+
+          // addBookToLibrary(data.title, data.author, data.pages, data.read_status === 'read' ? true : false);
+          // table.innerHTML = "";
+          // document.getElementById("form_new_book").style.display = "none";
+          // generateTable(table, myLibrary);
+          // generateTableHead(table);
+
+     });
 
      // const button_cancel = document.querySelector(".cancel_button");
      // button_cancel.addEventListener("click", (event) => {
