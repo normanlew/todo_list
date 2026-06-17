@@ -7,14 +7,14 @@ const all_projects = [];
 const button_new_project = document.querySelector("#new_project");
 
 button_new_project.addEventListener("click", (event) => {
-     console.log("new project button clicked");
+     // console.log("new project button clicked");
      createNewProject(all_projects);
 });
 
 const button_new_todo = document.querySelector("#new_todo");
 
 button_new_todo.addEventListener("click", (event) => {
-     console.log("new todo button clicked");
+     // console.log("new todo button clicked");
      createNewTodo(all_projects);
 });
 
@@ -48,8 +48,8 @@ function createNewProject(projects_list) {
 
      if (project_name !== null) {
           for (let project of projects_list) {
-               console.log(project.name);
-               console.log(project_name);
+               // console.log(project.name);
+               // console.log(project_name);
                if (project.name === project_name) {
                     alert("That project already exists");
                     project_exists = true;
@@ -77,7 +77,6 @@ function createNewTodo(projects_list) {
                         <div class="projects_list">
                             <label for="projects_list">Project:</label>
                             <select name="projects_list" id="projects_list">
-                                <option value="default">Default</option>
                             </select>
                         </div>
                         <div class="title">
@@ -142,14 +141,16 @@ function createNewTodo(projects_list) {
 
           event.target.reset();
 
-          console.log(data);
+          // console.log(data);
           // console.log(typeof(data.read_status));
-          console.log(data.projects_list);
+          // console.log(data.projects_list);
 
           const project_name = data.projects_list;
 
           const index = projects_list.findIndex(project => project.name === project_name);
-          console.log(index);
+          // console.log(index);
+
+          // console.log(data.complete);
 
           addTodoToProject(projects_list[index], data.title, data.description, data.dueDate, data.priority, data.name, 
                `${data.complete === "true" ? true : false}`);
@@ -176,9 +177,10 @@ function addTodoToProject(project, title, description, dueDate, priority, note, 
 }
 
 function display_all_projects(projects_list) {
-     console.log("inside display_all_projects function: ");
-     console.log(projects_list);
-     projects.innerHTML = "";
+     // console.log("inside display_all_projects function: ");
+     // console.log(projects_list);
+     // projects.innerHTML = "";
+     projects.replaceChildren();
      for (let project of all_projects) {
           let div_project = document.createElement("div");
 
@@ -203,7 +205,7 @@ function display_all_projects(projects_list) {
                div_todo_title.className = "todo_title"
                let p_title = document.createElement("p");
                p_title.innerHTML = todo.title;
-               div_todo_title.appendChild(p_title);
+               div_todo_title.appendChild(p_title); 
                let div_todo_dueDate = document.createElement("div");
                div_todo_dueDate.className = "todo_dueDate";
                let p_dueDate = document.createElement("p");
@@ -212,7 +214,10 @@ function display_all_projects(projects_list) {
                div_todo.appendChild(div_todo_title);
                div_todo.appendChild(div_todo_dueDate);
 
+               console.log(todo.title);
+               console.log(todo.complete);
                if (todo.complete === true) {
+                    console.log(todo.title + " should be black");
                     div_todo.style.backgroundColor = "rgb(48,47,47)";
                }
 
@@ -222,7 +227,7 @@ function display_all_projects(projects_list) {
                button_todo_expand.className = "todo_expand"
                button_todo_expand.innerHTML = "Expand";
                button_todo_expand.addEventListener("click", (event) => {
-                    console.log("Todo expand clicked");
+                    // console.log("Todo expand clicked");
                     displayFullTodo(todo, project, projects_list);
                });
 
@@ -316,6 +321,7 @@ function displayFullTodo(todo, project, projects_list) {
      const h2_complete = document.createElement("h2");
      h2_complete.innerHTML = "Completion status: ";
      const p_complete = document.createElement("p");
+     console.log("todo status: " + todo.complete);
      p_complete.innerHTML = `${todo.complete ? "Complete" : "Not Complete"}`;
      div_complete.appendChild(h2_complete);
      div_complete.appendChild(p_complete);
@@ -353,9 +359,10 @@ function displayFullTodo(todo, project, projects_list) {
 }
 
 function showTodoEdit(todo, project, projects_list) {
-     console.log("inside showTodoEdit function: ");
-     console.log(projects_list);
+     // console.log("inside showTodoEdit function: ");
+     // console.log(projects_list);
      // console.log(todo.title);
+     console.log("todo status2: " + todo.complete);
      projects.innerHTML = 
      `<div class="new_todo_wrapper">
           <form id="change_form" method="POST" action="/form_submit">
@@ -434,21 +441,21 @@ function showTodoEdit(todo, project, projects_list) {
 
           event.target.reset();
 
-          console.log(data);
+          // console.log(data);
 
           todo.title = data.title;
           todo.description = data.description;
           todo.dueDate = data.dueDate;
           todo.priority = data.priority;
           todo.note = data.note;
-          todo.complete = data.complete;
+          todo.complete = data.complete === "true" ? true: false;
 
           if (data.projects_list !== project.name) {
                const new_index = projects_list.findIndex(project => project.name === data.projects_list);
                projects_list[new_index].todoList.push(todo);
 
                const old_index = projects_list.findIndex(proj => proj.name === project.name);
-               console.log("old_index: " + old_index);
+               // console.log("old_index: " + old_index);
                const oldProject = projects_list[old_index];
                // console.log(old_project);
                const old_todo_index = oldProject.todoList.findIndex(todo_old => todo_old.id === todo.id);
