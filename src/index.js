@@ -18,26 +18,28 @@ button_new_todo.addEventListener("click", (event) => {
      createNewTodo(all_projects);
 });
 
-const afternoonTodos = new Project(crypto.randomUUID(), "Afternoon");
-const eveningTodos = new Project(crypto.randomUUID(), "Evening");
+// const afternoonTodos = new Project(crypto.randomUUID(), "Afternoon");
+// const eveningTodos = new Project(crypto.randomUUID(), "Evening");
+const defaultTodos = new Project(crypto.randomUUID(), "Default");
+all_projects.push(defaultTodos);
 
-addTodoToProject(afternoonTodos, "Call car repair", "Call dealership to do oil change", new Date(2018, 11, 24, 10, 33, 30),
-     "Low", `This is the half-yearly service`, false);
+// addTodoToProject(afternoonTodos, "Call car repair", "Call dealership to do oil change", new Date(2018, 11, 24, 10, 33, 30),
+//      "Low", `This is the half-yearly service`, false);
 
-addTodoToProject(afternoonTodos, "Schedule lunch with Bob", "Call Bob and the restaurant to set the time", 
-     new Date(2018, 1, 24, 17, 53, 45), "Medium", "Bob will be in town for business", true);
+// addTodoToProject(afternoonTodos, "Schedule lunch with Bob", "Call Bob and the restaurant to set the time", 
+//      new Date(2018, 1, 24, 17, 53, 45), "Medium", "Bob will be in town for business", true);
 
-addTodoToProject(afternoonTodos, "Go to gym", "Go to the LA fitness in the lobby", 
-     new Date(2018, 1, 24, 19, 22, 22), "High", "Biweekly workout", false);
+// addTodoToProject(afternoonTodos, "Go to gym", "Go to the LA fitness in the lobby", 
+//      new Date(2018, 1, 24, 19, 22, 22), "High", "Biweekly workout", false);
 
-addTodoToProject(eveningTodos, "Walk the dog", "Take a stroll through the neighborhood with dog", 
-     new Date(2026, 1, 24, 18, 53, 45), "Low", "Should eventually be a daily event", false);
+// addTodoToProject(eveningTodos, "Walk the dog", "Take a stroll through the neighborhood with dog", 
+//      new Date(2026, 1, 24, 18, 53, 45), "Low", "Should eventually be a daily event", false);
 
-addTodoToProject(eveningTodos, "Make dinner", "Use ingredients in the refrigerator", 
-     new Date(2026, 5, 30, 19, 22, 22), "High", "There should be meat and veggies as well as a starch", false);
+// addTodoToProject(eveningTodos, "Make dinner", "Use ingredients in the refrigerator", 
+//      new Date(2026, 5, 30, 19, 22, 22), "High", "There should be meat and veggies as well as a starch", false);
 
-all_projects.push(afternoonTodos);
-all_projects.push(eveningTodos);
+// all_projects.push(afternoonTodos);
+// all_projects.push(eveningTodos);
 const projects = document.querySelector(".projects");
 
 display_all_projects(all_projects);
@@ -152,7 +154,7 @@ function createNewTodo(projects_list) {
 
           // console.log(data.complete);
 
-          addTodoToProject(projects_list[index], data.title, data.description, data.dueDate, data.priority, data.name, 
+          addTodoToProject(projects_list[index], data.title, data.description, data.dueDate, data.priority, data.note, 
                `${data.complete === "true" ? true : false}`);
 
           display_all_projects(projects_list);
