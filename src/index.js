@@ -154,8 +154,11 @@ function createNewTodo(projects_list) {
 
           // console.log(data.complete);
 
+          const todo_complete = data.complete === "true" ? true : false;
+
           addTodoToProject(projects_list[index], data.title, data.description, data.dueDate, data.priority, data.note, 
-               `${data.complete === "true" ? true : false}`);
+                         todo_complete);
+               // `${data.complete === "true" ? true : false}`);
 
           display_all_projects(projects_list);
 
@@ -329,11 +332,12 @@ function displayFullTodo(todo, project, projects_list) {
      div_complete.appendChild(p_complete);
 
      const div_button_done_edit = document.createElement("div");
-     div_title.className = "fullTodo";
+     // div_button_done_edit.className = "fullTodo";
+     // div_title.className = "fullTodo";
      const button_done = document.createElement("button");
      button_done.textContent = "Done";
      button_done.addEventListener("click", (event) => {
-          projects.innerHTML = "";
+          projects.replaceChildren();
           display_all_projects(projects_list);
      });
      div_button_done_edit.appendChild(button_done);
@@ -355,7 +359,8 @@ function displayFullTodo(todo, project, projects_list) {
      todo_display.appendChild(div_button_done_edit);
 
 
-     projects.innerHTML = "";
+     projects.replaceChildren();
+     // projects.innerHTML = "";
      projects.appendChild(todo_display);
 
 }
