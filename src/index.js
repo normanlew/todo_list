@@ -4,6 +4,9 @@ import "./styles.css";
 
 const all_projects = [];
 
+///////////
+// const all_projects = JSON.parse(localStorage.getItem("projects") || "[]");
+
 const button_new_project = document.querySelector("#new_project");
 
 button_new_project.addEventListener("click", (event) => {
@@ -20,8 +23,27 @@ button_new_todo.addEventListener("click", (event) => {
 
 // const afternoonTodos = new Project(crypto.randomUUID(), "Afternoon");
 // const eveningTodos = new Project(crypto.randomUUID(), "Evening");
-const defaultTodos = new Project(crypto.randomUUID(), "Default");
-all_projects.push(defaultTodos);
+
+////////////
+if (localStorage.length <= 0) {
+     const defaultTodos = new Project(crypto.randomUUID(), "Default");
+     all_projects.push(defaultTodos); 
+     localStorage.setItem("projects", JSON.stringify(all_projects));
+}
+else {
+     const unhydrated_projects = JSON.parse(localStorage.getItem("projects"));
+     unhydrated_projects.forEach((proj) => {
+          // console.log(proj);
+          const hydrated_project = new Project(proj._id, proj._name);
+          proj.todoList.forEach((todo) => {
+               hydrated_project.todoList.addTodo(todo);
+          });
+          all_projects.push(hydrated_project);
+          console.log(all_projects);
+     });
+}
+
+
 
 // addTodoToProject(afternoonTodos, "Call car repair", "Call dealership to do oil change", new Date(2018, 11, 24, 10, 33, 30),
 //      "Low", `This is the half-yearly service`, false);
@@ -64,9 +86,14 @@ function createNewProject(projects_list) {
           }
           if (!project_exists) {
                const new_project = new Project(crypto.randomUUID(), project_name);
-               projects_list.push(new_project);    
+               projects_list.push(new_project); 
+               
+               //////////
+               localStorage.removeItem("projects");
+               localStorage.setItem("projects", JSON.stringify(projects_list));
           }
      }    
+     // console.log(localStorage);
      display_all_projects(projects_list);
 }
 
@@ -159,6 +186,10 @@ function createNewTodo(projects_list) {
           addTodoToProject(projects_list[index], data.title, data.description, data.dueDate, data.priority, data.note, 
                          todo_complete);
                // `${data.complete === "true" ? true : false}`);
+
+          /////////////
+          localStorage.removeItem("projects");
+          localStorage.setItem("projects", JSON.stringify(projects_list));
 
           display_all_projects(projects_list);
 

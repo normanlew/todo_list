@@ -4,6 +4,10 @@ export class Project {
         this.id = id;
     }
 
+    // constructor(data) {
+    //     Object.assign(this, data);
+    // }
+
     todoList = [];
 
     get id() {
