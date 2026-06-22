@@ -220,7 +220,7 @@ function display_all_projects(projects_list) {
      // console.log(projects_list);
      // projects.innerHTML = "";
      projects.replaceChildren();
-     for (let project of all_projects) {
+     for (let project of projects_list) {
           let div_project = document.createElement("div");
 
           div_project.className = "project";
@@ -281,7 +281,7 @@ function display_all_projects(projects_list) {
                     project.todoList.splice(index, 1);
                     localStorage.removeItem("projects");
                     localStorage.setItem("projects", JSON.stringify(projects_list));
-                    // display_all_projects(projects_list);
+                    display_all_projects(projects_list);
                });
 
                div_todo_buttons.appendChild(button_todo_expand);
@@ -405,7 +405,7 @@ function showTodoEdit(todo, project, projects_list) {
      // console.log("inside showTodoEdit function: ");
      // console.log(projects_list);
      // console.log(todo.title);
-     console.log("todo status2: " + todo.complete);
+     // console.log("todo status2: " + todo.complete);
      projects.innerHTML = 
      `<div class="new_todo_wrapper">
           <form id="change_form" method="POST" action="/form_submit">
