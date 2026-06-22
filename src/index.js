@@ -206,7 +206,7 @@ function createNewTodo(projects_list) {
 
      const button_cancel = document.querySelector(".cancel_button");
      button_cancel.addEventListener("click", (event) => {
-          display_all_projects()
+          display_all_projects(projects_list);
      })
 }
 
