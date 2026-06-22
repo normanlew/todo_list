@@ -503,8 +503,6 @@ function showTodoEdit(todo, project, projects_list) {
                // console.log(old_project);
                const old_todo_index = oldProject.todoList.findIndex(todo_old => todo_old.id === todo.id);
                oldProject.todoList.splice(old_todo_index, 1);
-               localStorage.removeItem("projects");
-               localStorage.setItem("projects", JSON.stringify(projects_list));
           }
           // console.log(typeof(data.read_status));
           // console.log(data.projects_list);
@@ -516,6 +514,9 @@ function showTodoEdit(todo, project, projects_list) {
 
           // addTodoToProject(projects_list[index], data.title, data.description, data.dueDate, data.priority, data.name, 
           //      `${data.complete === "true" ? true : false}`);
+
+          localStorage.removeItem("projects");
+          localStorage.setItem("projects", JSON.stringify(projects_list));
 
           display_all_projects(projects_list);
 
