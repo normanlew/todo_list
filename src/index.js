@@ -33,7 +33,7 @@ if (localStorage.length <= 0) {
 else {
      const unhydrated_projects = JSON.parse(localStorage.getItem("projects"));
      unhydrated_projects.forEach((proj) => {
-          console.log(proj);
+          // console.log(proj);
           const hydrated_project = new Project(proj._id, proj._name);
           proj.todoList.forEach((todo) => {
                // hydrated_project.addTodo(todo);
@@ -42,7 +42,7 @@ else {
                hydrated_project.addTodo(hydrated_todo);
           });
           all_projects.push(hydrated_project);
-          console.log(all_projects);
+          // console.log(all_projects);
      });
 }
 
@@ -121,7 +121,7 @@ function createNewTodo(projects_list) {
                         </div>
                         <div class="dueDate">
                             <label for="dueDate">Date and Time:</label>
-                            <input type="datetime-local"  value="2017-06-01T08:30" id="dueDate" name="dueDate">
+                            <input type="datetime-local"  value="2026-06-01T08:30" id="dueDate" name="dueDate">
                         </div>
                         <div class="note">
                             <label for="note">Note:</label>
@@ -253,10 +253,10 @@ function display_all_projects(projects_list) {
                div_todo.appendChild(div_todo_title);
                div_todo.appendChild(div_todo_dueDate);
 
-               console.log(todo.title);
-               console.log(todo.complete);
+               // console.log(todo.title);
+               // console.log(todo.complete);
                if (todo.complete === true) {
-                    console.log(todo.title + " should be black");
+                    // console.log(todo.title + " should be black");
                     div_todo.style.backgroundColor = "rgb(48,47,47)";
                }
 
@@ -279,7 +279,9 @@ function display_all_projects(projects_list) {
                     // console.log
                     const index = project.todoList.findIndex(_todo => _todo.id === todo.id);
                     project.todoList.splice(index, 1);
-                    display_all_projects(projects_list);
+                    localStorage.removeItem("projects");
+                    localStorage.setItem("projects", JSON.stringify(projects_list));
+                    // display_all_projects(projects_list);
                });
 
                div_todo_buttons.appendChild(button_todo_expand);
@@ -360,7 +362,7 @@ function displayFullTodo(todo, project, projects_list) {
      const h2_complete = document.createElement("h2");
      h2_complete.innerHTML = "Completion status: ";
      const p_complete = document.createElement("p");
-     console.log("todo status: " + todo.complete);
+     // console.log("todo status: " + todo.complete);
      p_complete.innerHTML = `${todo.complete ? "Complete" : "Not Complete"}`;
      div_complete.appendChild(h2_complete);
      div_complete.appendChild(p_complete);
@@ -422,7 +424,7 @@ function showTodoEdit(todo, project, projects_list) {
                </div>
                <div class="dueDate">
                     <label for="dueDate">Date and Time:</label>
-                    <input type="datetime-local"  value="2017-06-01T08:30" id="dueDate" name="dueDate"
+                    <input type="datetime-local"  id="dueDate" name="dueDate"
                     value="${todo.dueDate}">
                </div>
                <div class="note">
@@ -501,7 +503,8 @@ function showTodoEdit(todo, project, projects_list) {
                // console.log(old_project);
                const old_todo_index = oldProject.todoList.findIndex(todo_old => todo_old.id === todo.id);
                oldProject.todoList.splice(old_todo_index, 1);
-
+               localStorage.removeItem("projects");
+               localStorage.setItem("projects", JSON.stringify(projects_list));
           }
           // console.log(typeof(data.read_status));
           // console.log(data.projects_list);
