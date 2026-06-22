@@ -33,10 +33,13 @@ if (localStorage.length <= 0) {
 else {
      const unhydrated_projects = JSON.parse(localStorage.getItem("projects"));
      unhydrated_projects.forEach((proj) => {
-          // console.log(proj);
+          console.log(proj);
           const hydrated_project = new Project(proj._id, proj._name);
           proj.todoList.forEach((todo) => {
-               hydrated_project.todoList.addTodo(todo);
+               // hydrated_project.addTodo(todo);
+               const hydrated_todo = new Todo(todo._id, todo._title, todo._description, todo._dueDate, todo._priority,
+                    todo._note, todo._complete);
+               hydrated_project.addTodo(hydrated_todo);
           });
           all_projects.push(hydrated_project);
           console.log(all_projects);
