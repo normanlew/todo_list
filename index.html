@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todolist</title>
+<script defer src="main.js"></script></head>
+    <body>
+        <div class="container">
+            <div class="create_new">
+                <button id="new_project">
+                    New Project
+                </button>
+
+                <button id="new_todo">
+                    New Todo
+                </button>
+
+            </div>
+
+            <div class="projects">
+                <!-- <div class="new_todo_wrapper">
+                    <form id="submit-form" method="POST" action="/form_submit">
+                        <div class="projects_list">
+                            <label for="projects_list">Project:</label>
+                            <select name="projects_list" id="projects_list">
+                                <option value="default">Default</option>
+                                <option value="afternoon">Afternoon</option>
+                            </select>
+                        </div>
+                        <div class="title">
+                            <label for="title">Title:</label>
+                            <input type="text" id="title" name="title">
+                        </div>
+                        <div class="description">
+                            <label for="description">Description:</label>
+                            <input type="text" id="description" name="description">
+                        </div>
+                        <div class="dueDate">
+                            <label for="dueDate">Date and Time:</label>
+                            <input type="datetime-local"  value="2017-06-01T08:30" id="dueDate" name="dueDate">
+                        </div>
+                        <div class="note">
+                            <label for="note">Note:</label>
+                            <textarea id="note" name="note" rows="5" cols="40" placeholder="Notes...">
+                            </textarea>
+                        <div class="priority">
+                            <label for="priority">Priority:</label>
+                            <select name="priority" id="priority">
+                                <option value="low">Low</option>
+                                <option value="medium">Medium</option>
+                                <option value="high">High</option>
+                            </select>
+                        <div class="complete">
+                            <label for="complete">Todo complete?:</label>
+                            <select name="complete" id="complete">
+                                <option value="false">Not complete</option>
+                                <option value="true">Complete</option>
+                            </select>
+                        </div>
+                        <div class="form_buttons">
+                            <button type="submit" form="submit-form" value="form-submission" class="submit-button">
+                                Submit
+                            </button>
+                            <button type="reset">
+                                Reset
+                            </button>
+                            <button value="cancel_new_todo" class="cancel_button">
+                                Cancel
+                            </button>
+                        </div>
+                    </form>
+                </div> -->
+                <!-- <div class="project" id="project_1">
+                    <div class="project_name">
+                        <h2>Afternoon</h2>
+                    </div>
+
+                    <div class="todo_wrapper">
+                        <div class="todo">
+                            <div class="todo_title">
+                                <p>Call car repair</p>
+                            </div>
+                            <div class="todo_dueDate">
+                                <p>Mon Dec 24 2018 10:33:30 GMT-0800</p>
+                            </div>
+                        </div>
+                        <div class ="todo_buttons">
+                            <button class="todo_expand">
+                                Expand
+                            </button>
+                            <button class="todo_delete">
+                                Delete
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="todo">
+                        <div class="todo_title">
+                            <p>Call car repair</p>
+                        </div>
+                        <div class="todo_dueDate">
+                            <p>Mon Dec 24 2018 10:33:30 GMT-0800</p>
+                        </div>
+                    </div>
+
+                    <div class="todo">
+                        <div class="todo_title">
+                            <p>Call car repair</p>
+                        </div>
+                        <div class="todo_dueDate">
+                            <p>Mon Dec 24 2018 10:33:30 GMT-0800</p>
+                        </div>
+                    </div>
+
+                    <div class="todo">
+                        <div class="todo_title">
+                            <p>Call car repair</p>
+                        </div>
+                        <div class="todo_dueDate">
+                            <p>Mon Dec 24 2018 10:33:30 GMT-0800</p>
+                        </div>
+                    </div>
+
+                    <div class="todo">
+                        <div class="todo_title">
+                            <p>Call car repair</p>
+                        </div>
+                        <div class="todo_dueDate">
+                            <p>Mon Dec 24 2018 10:33:30 GMT-0800</p>
+                        </div>
+                    </div>
+
+                    <div class="todo">
+                        <div class="todo_title">
+                            <p>Call car repair</p>
+                        </div>
+                        <div class="todo_dueDate">
+                            <p>Mon Dec 24 2018 10:33:30 GMT-0800</p>
+                        </div>
+                    </div>
+
+                    <div class="todo">
+                        <div class="todo_title">
+                            <p>Call car repair</p>
+                        </div>
+                        <div class="todo_dueDate">
+                            <p>Mon Dec 24 2018 10:33:30 GMT-0800</p>
+                        </div>
+                    </div>
+
+                    <div class="todo">
+                        <div class="todo_title">
+                            <p>Call car repair</p>
+                        </div>
+                        <div class="todo_dueDate">
+                            <p>Mon Dec 24 2018 10:33:30 GMT-0800</p>
+                        </div>
+                    </div>
+
+                    <div class="todo">
+                        <div class="todo_title">
+                            <p>Call car repair</p>
+                        </div>
+                        <div class="todo_dueDate">
+                            <p>Mon Dec 24 2018 10:33:30 GMT-0800</p>
+                        </div>
+                    </div>
+
+                    <div class="todo">
+                        <div class="todo_title">
+                            <p>Call car repair</p>
+                        </div>
+                        <div class="todo_dueDate">
+                            <p>Mon Dec 24 2018 10:33:30 GMT-0800</p>
+                        </div>
+                    </div>
+
+                    <div class="todo">
+                        <div class="todo_title">
+                            <p>Call car repair</p>
+                        </div>
+                        <div class="todo_dueDate">
+                            <p>Mon Dec 24 2018 10:33:30 GMT-0800</p>
+                        </div>
+                    </div>
+
+                    <div class="todo">
+                        <div class="todo_title">
+                            <p>Call car repair</p>
+                        </div>
+                        <div class="todo_dueDate">
+                            <p>Mon Dec 24 2018 10:33:30 GMT-0800</p>
+                        </div>
+                    </div>
+
+                    <div class="todo">
+                        <div class="todo_title">
+                            <p>Call car repair</p>
+                        </div>
+                        <div class="todo_dueDate">
+                            <p>Mon Dec 24 2018 10:33:30 GMT-0800</p>
+                        </div>
+                    </div>
+
+                    <div class="todo">
+                        <div class="todo_title">
+                            <p>Call car repair</p>
+                        </div>
+                        <div class="todo_dueDate">
+                            <p>Mon Dec 24 2018 10:33:30 GMT-0800</p>
+                        </div>
+                    </div>
+
+                    <div class="todo">
+                        <div class="todo_title">
+                            <p>Call car repair</p>
+                        </div>
+                        <div class="todo_dueDate">
+                            <p>Mon Dec 24 2018 10:33:30 GMT-0800</p>
+                        </div>
+                    </div>
+
+                    <div class="todo">
+                        <div class="todo_title">
+                            <p>Call car repair</p>
+                        </div>
+                        <div class="todo_dueDate">
+                            <p>Mon Dec 24 2018 10:33:30 GMT-0800</p>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="project" id="project_2">
+                    
+                </div>
+
+                <div class="project" id="project_3">
+                    
+                </div>
+
+                <div class="project" id="project_4">
+                    
+                </div>
+
+                <div class="project" id="project_5">
+                    
+                </div>
+
+                <div class="project" id="project_6">
+                    
+                </div>
+
+                <div class="project" id="project_7">
+                    
+                </div>
+
+                <div class="project" id="project_8">
+                    
+                </div> -->
+
+            </div>
+        </div>
+        
+    </body>
+</html>
